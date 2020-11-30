@@ -20,3 +20,7 @@ class DataSourceError extends UserFailure {
 class ReturnIsEmpty extends UserFailure {
   ReturnIsEmpty(String message) : super(message);
 }
+
+class RequestError extends UserFailure {
+  RequestError(String message) : super(message);
+}

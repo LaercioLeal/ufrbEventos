@@ -1,5 +1,5 @@
-import 'package:ufrb_eventos/app/modules/user_commands/domain/entities/summary_entity.dart';
+import 'package:ufrb_eventos/app/modules/user_commands/infra/model/summary_model.dart';
 
 abstract class IUserCommandsDatasource {
-  Future<SummaryEntity> createSummary(SummaryEntity summaryEntity);
+  Future<SummaryModel> createSummary(SummaryModel summaryModel);
 }

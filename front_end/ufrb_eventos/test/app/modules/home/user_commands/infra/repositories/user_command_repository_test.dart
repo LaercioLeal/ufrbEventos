@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:ufrb_eventos/app/modules/user_commands/domain/entities/summary_entity.dart';
 import 'package:ufrb_eventos/app/modules/user_commands/domain/errors/errors.dart';
-import 'package:ufrb_eventos/app/modules/user_commands/domain/repositories/user_commands_repository.dart';
 import 'package:ufrb_eventos/app/modules/user_commands/infra/datasources/user_commands_datasource.dart';
 import 'package:ufrb_eventos/app/modules/user_commands/infra/model/summary_model.dart';
 import 'package:ufrb_eventos/app/modules/user_commands/infra/repositories/user_command_repository.dart';
