@@ -6,7 +6,7 @@ const connection = require("./Model/connection");
 const createDB = require("./Model/createDB");
 
 const summary = require("./Routes/summaryRoutes");
-const table = require('./Model/summary');
+const tables = require('./Model/tables');
 
 //Database Connection
 async function dbConnection(){
@@ -14,7 +14,7 @@ async function dbConnection(){
     try {
         await connection.connect();
         console.log("Conexão realizada com sucesso!");
-        table.createTable();
+        tables.create();
     } catch (error) {
         await connection.end(); //Encerra client
         console.log("Banco de dados não encontrado. Tentando criar nova database...\n");

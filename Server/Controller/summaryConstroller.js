@@ -1,5 +1,5 @@
 const Summary = require('../Model/summary');
-//const Inscription = require('../Model/inscription');
+const Inscription = require('../Model/inscription');
 
 module.exports = {
     
@@ -8,8 +8,9 @@ module.exports = {
         let {inscriptionId, enrollment, userInstitution, title, description, summary, video} = req.body;
         
         if(!isNaN(inscriptionId)){
-            //let inscription = Inscription.inscriptionConsultant(inscriptionId);
-            let inscription = true;
+
+            let inscription = Inscription.inscriptionConsultant(inscriptionId);
+            console.log("INSCRIPTION RESULT: ", inscription);
 
             if(inscription){
             
@@ -21,7 +22,7 @@ module.exports = {
         
                     if(create){
                         console.log("Resumo adicionado com sucesso!\n");
-                        res.json({ response: 'true'});
+                        res.json({ response: 'true' });
                     }
                     else{
                         console.log("Não foi possível realizar o cadastro.\n", create.error, create.validation);
