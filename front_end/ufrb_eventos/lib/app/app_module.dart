@@ -7,7 +7,7 @@ import 'package:ufrb_eventos/app/modules/home/home_module.dart';
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
-        $AppController,
+        Bind((i) => AppController()),
       ];
 
   @override
