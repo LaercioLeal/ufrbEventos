@@ -16,13 +16,13 @@ main() {
 
   test('deve retornar um summary', () async {
     when(datasource.createSummary(any)).thenAnswer((_) async => SummaryModel());
-    final result = await repository.createSummary(SummaryEntity());
+    final result = await repository.createSummary(SummaryModel());
     expect(result, isA<Right<dynamic, SummaryEntity>>());
   });
 
   test('deve retornar um NotValidParams', () async {
     when(repository.createSummary(any)).thenThrow(Exception());
-    final result = await repository.createSummary(SummaryEntity());
+    final result = await repository.createSummary(SummaryModel());
     expect(result.fold(id, id), isA<NotValidParams>());
   });
 }

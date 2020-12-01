@@ -3,12 +3,18 @@ import 'package:ufrb_eventos/app/modules/user_commands/domain/entities/summary_e
 import 'package:ufrb_eventos/app/modules/user_commands/domain/entities/user_entity.dart';
 
 class SummaryModel extends SummaryEntity {
-  SummaryModel({int id, UserEntity user, String category, String participation, String phone, bool attendance, double userWorkload}) : super(id: id, user: user, category: category, participation: participation, phone: phone, attendance: attendance, userWorkload: userWorkload);
+  SummaryModel({int inscriptionId, UserEntity user, String enrollment, String userInstitution, String description, String summary, String video, String category, String participation, String phone, bool attendance, double userWorkload}) : super(inscriptionId, user, enrollment, userInstitution, description, summary, video, category, participation, phone, attendance, userWorkload);
   
+
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'inscriptionId': inscriptionId,
       'user': user?.toMap(),
+      'enrollment': enrollment,
+      'userInstitution': userInstitution,
+      'description': description,
+      'summary': summary,
+      'video': video,
       'category': category,
       'participation': participation,
       'phone': phone,
@@ -21,8 +27,13 @@ class SummaryModel extends SummaryEntity {
     if (map == null) return null;
   
     return SummaryModel(
-      id: map['id'],
+      inscriptionId: map['inscriptionId'],
       user: UserEntity.fromMap(map['user']),
+      enrollment: map['enrollment'],
+      userInstitution: map['userInstitution'],
+      description: map['description'],
+      summary: map['summary'],
+      video: map['video'],
       category: map['category'],
       participation: map['participation'],
       phone: map['phone'],
@@ -34,4 +45,5 @@ class SummaryModel extends SummaryEntity {
   String toJson() => json.encode(toMap());
 
   factory SummaryModel.fromJson(String source) => SummaryModel.fromMap(json.decode(source));
+  
 }
