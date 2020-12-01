@@ -28,6 +28,7 @@ module.exports = {
                 ' description, summaryDocument, video, approvement ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
             values: [inscriptionId, enrollment, userInstitution, title, description, summary, video, 'false']
         }
+        
         connection.query(query, (err) => {
             if (err) {
                 let res = {

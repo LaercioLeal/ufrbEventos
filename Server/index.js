@@ -19,7 +19,6 @@ async function dbConnection(){
         await connection.end(); //Encerra client
         console.log("Banco de dados não encontrado. Tentando criar nova database...\n");
         await createDB.connect();
-        createDB.end();
     }
     
 }
