@@ -34,3 +34,5 @@ app.listen(3500, () => {
     console.log("Iniciando PostgreSQL.");
     dbConnection();
 });
+
+module.exports = app;

@@ -6,15 +6,15 @@ module.exports = {
     async createSummary(req, res) {
 
         let { inscriptionId, enrollment, userInstitution, title, description, summary, video } = req.body;
-
+        
         if (!isNaN(inscriptionId)) {
 
             let inscription = await Inscription.inscriptionConsultantById(inscriptionId);
-            console.log("INSCRIPTION RESULT: ", inscription);
 
             if (inscription == true) {
 
                 if (enrollment == '' || title == '' || summary == '') {
+                    console.log("Resumo não adicionado. Dados em branco.");
                     res.json({ response: 'false', observation: 'Dados em branco' });
                 }
                 else {
@@ -37,6 +37,7 @@ module.exports = {
 
         }
         else {
+            console.log("Inscrição IsNaN");
             res.json({ response: 'false', observation: 'Inscrição IsNaN' });
         }
 
