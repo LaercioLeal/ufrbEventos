@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1082412803770",
+    "firebase_url": "https://ufrbeventos-33771.firebaseio.com",
+    "project_id": "ufrbeventos-33771",
+    "storage_bucket": "ufrbeventos-33771.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082412803770:android:a834d44494e3bfcb2c4483",
+        "android_client_info": {
+          "package_name": "com.example.ufrb_eventos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082412803770-2qo2mjd8e4h7dl92qfishk1qvlmlfevm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ufrb_eventos",
+            "certificate_hash": "cf85972d0145a4bc57dd10d927f46655378be19d"
+          }
+        },
+        {
+          "client_id": "1082412803770-pn77ncmlpb9sl5iglc223c69kto14k2r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe1dyEl4nd2SAmNbpu3gBa1Rn2xN3N4Bk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082412803770-pn77ncmlpb9sl5iglc223c69kto14k2r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

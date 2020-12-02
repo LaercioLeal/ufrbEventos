@@ -6,6 +6,8 @@ import 'infra/repositories/user_command_repository.dart';
 import 'presenter/createSummary/create_summary_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'presenter/createSummary/create_summary_page.dart';
+
 class UserCommandsModule extends ChildModule {
   @override
   List<Bind> get binds => [
@@ -17,7 +19,9 @@ class UserCommandsModule extends ChildModule {
       ];
 
   @override
-  List<ModularRouter> get routers => [];
+  List<ModularRouter> get routers => [
+    ModularRouter(Modular.initialRoute, child: (_, args) => CreateSummaryPage()),
+  ];
 
   static Inject get to => Inject<UserCommandsModule>.of();
 }

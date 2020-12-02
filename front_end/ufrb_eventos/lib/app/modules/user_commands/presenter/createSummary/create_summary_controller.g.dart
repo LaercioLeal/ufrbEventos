@@ -41,12 +41,89 @@ mixin _$CreateSummaryController on _CreateSummaryControllerBase, Store {
     });
   }
 
+  final _$filePDFAtom = Atom(name: '_CreateSummaryControllerBase.filePDF');
+
+  @override
+  File get filePDF {
+    _$filePDFAtom.reportRead();
+    return super.filePDF;
+  }
+
+  @override
+  set filePDF(File value) {
+    _$filePDFAtom.reportWrite(value, super.filePDF, () {
+      super.filePDF = value;
+    });
+  }
+
+  final _$fileVideoAtom = Atom(name: '_CreateSummaryControllerBase.fileVideo');
+
+  @override
+  File get fileVideo {
+    _$fileVideoAtom.reportRead();
+    return super.fileVideo;
+  }
+
+  @override
+  set fileVideo(File value) {
+    _$fileVideoAtom.reportWrite(value, super.fileVideo, () {
+      super.fileVideo = value;
+    });
+  }
+
+  final _$timeAtom = Atom(name: '_CreateSummaryControllerBase.time');
+
+  @override
+  dynamic get time {
+    _$timeAtom.reportRead();
+    return super.time;
+  }
+
+  @override
+  set time(dynamic value) {
+    _$timeAtom.reportWrite(value, super.time, () {
+      super.time = value;
+    });
+  }
+
   final _$sendSummaryAsyncAction =
       AsyncAction('_CreateSummaryControllerBase.sendSummary');
 
   @override
   Future sendSummary() {
     return _$sendSummaryAsyncAction.run(() => super.sendSummary());
+  }
+
+  final _$getPdfAsyncAction =
+      AsyncAction('_CreateSummaryControllerBase.getPdf');
+
+  @override
+  Future getPdf() {
+    return _$getPdfAsyncAction.run(() => super.getPdf());
+  }
+
+  final _$uploadPdfAsyncAction =
+      AsyncAction('_CreateSummaryControllerBase.uploadPdf');
+
+  @override
+  Future uploadPdf() {
+    return _$uploadPdfAsyncAction.run(() => super.uploadPdf());
+  }
+
+  final _$getMovieAsyncAction =
+      AsyncAction('_CreateSummaryControllerBase.getMovie');
+
+  @override
+  Future getMovie() {
+    return _$getMovieAsyncAction.run(() => super.getMovie());
+  }
+
+  final _$uploadMovieAsyncAction =
+      AsyncAction('_CreateSummaryControllerBase.uploadMovie');
+
+  @override
+  Future uploadMovie() {
+    return _$uploadMovieAsyncAction.run(() => super.uploadMovie());
   }
 
   final _$_CreateSummaryControllerBaseActionController =
@@ -122,7 +199,10 @@ mixin _$CreateSummaryController on _CreateSummaryControllerBase, Store {
   String toString() {
     return '''
 presentation: ${presentation},
-summaryModel: ${summaryModel}
+summaryModel: ${summaryModel},
+filePDF: ${filePDF},
+fileVideo: ${fileVideo},
+time: ${time}
     ''';
   }
 }
