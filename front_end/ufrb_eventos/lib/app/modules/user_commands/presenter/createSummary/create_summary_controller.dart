@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ufrb_eventos/app/modules/user_commands/domain/entities/user_entity.dart';
 import 'package:ufrb_eventos/app/modules/user_commands/domain/usecases/create_summary.dart';
@@ -11,12 +14,23 @@ class CreateSummaryController = _CreateSummaryControllerBase
 
 abstract class _CreateSummaryControllerBase with Store {
   final ICreateSummary usecase;
+  firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
 
   @observable
   bool presentation = false;
 
   @observable
-  SummaryModel summaryModel;
+  SummaryModel summaryModel = SummaryModel();
+
+  @observable
+  File filePDF;
+
+  @observable
+  File fileVideo;
+
+  @observable
+  var time;
 
   _CreateSummaryControllerBase(this.usecase);
 
@@ -41,11 +55,54 @@ abstract class _CreateSummaryControllerBase with Store {
 
   @action
   sendSummary() async {
-    var result = await usecase(summaryModel);
+    time = DateTime.now();
+    await uploadPdf();
+    await uploadMovie();
+    /* var result = await usecase(summaryModel);
     result.fold((l) {
       asuka.showSnackBar(SnackBar(content: Text('Deu ruim')));
     }, (r) {
       asuka.showSnackBar(SnackBar(content: Text('Deu Bão')));
+    });*/
+  }
+
+  @action
+  getPdf() async {
+    FilePickerResult result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      return filePDF = File(result.files.single.path);
+    } else {
+      asuka.showSnackBar(SnackBar(content: Text('Deu ruim')));
+    }
+  }
+
+  @action
+  uploadPdf() async {
+    await storage
+        .ref('$time/summary.pdf')
+        .putFile(filePDF)
+        .then((value) async {
+      return summaryModel.summary = await value.ref.getDownloadURL();
+    });
+  }
+
+  @action
+  getMovie() async {
+    FilePickerResult result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      return fileVideo = File(result.files.single.path);
+    } else {
+      asuka.showSnackBar(SnackBar(content: Text('Deu ruim')));
+    }
+  }
+
+  @action
+  uploadMovie() async {
+    await storage
+        .ref('$time/movie.mp4')
+        .putFile(fileVideo)
+        .then((value) async {
+      return summaryModel.video = await value.ref.getDownloadURL();
     });
   }
 }
