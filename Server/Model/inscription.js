@@ -23,53 +23,97 @@ module.exports = {
     },
 
     async createInscription(usercpf, eventid, saleid, userinstitution, category,
-            participation, phone, attendance, userworkload) {
+        participation, phone) {
 
-        let query = {
-            text: 'INSERT INTO inscription( usercpf, eventid, saleid, userinstitution, category, ' +
-                ' participation, phone, attendance, userworkload) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
-            values: [usercpf, eventid, saleid, userinstitution, category, participation,
-                phone, attendance, userworkload]
+        /*Adiciona inscrições no banco.
+         *Caso a inscrição seja bem sucedida retorna TRUE senão retorna FALSE.*/
+
+        let validate = false;
+
+        validate = await this.inscriptionConsultantByEventUser(usercpf, eventid);
+
+        if (validate == false) {
+
+            let query = {
+                text: 'INSERT INTO inscription( usercpf, eventid, saleid, userinstitution, category, ' +
+                    ' participation, phone, attendance, userworkload) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
+                values: [usercpf, eventid, saleid, userinstitution, category, participation,
+                    phone, 0, 0]
+            }
+
+            validate = await connection.query(query)
+                .then((res) => {
+                    return true;
+                })
+                .catch(err => {
+                    console.log("Não foi possível realizar inscrição. Erro:\n", err);
+                    return false;
+                });
+                
+            return validate;
+
         }
-
-        connection.query(query, (err) => {
-            if (err) {
-                let res = {
-                    validation: 'false',
-                    error: err.stack
-                }
-                return res;
-            }
-            else {
-                return true;
-            }
-        });
-
+        else {
+            return false;
+        }
     },
 
-    inscriptionConsultant(inscriptionId){
+    async inscriptionConsultantById(inscriptionId) {
 
-        let validate = 0;
+        /*Consulta inscrições no banco por ID de INSCRIÇÕES.
+         *Caso encontrada retorna TRUE senão retorna FALSE.*/
+
         let query = {
             text: "SELECT id FROM inscription WHERE id = $1",
             values: [inscriptionId]
         }
-        
-        connection.query(query, (err, res) => {
-                   
-            if (res.rows[0] != undefined) {    
-                validate = true;
-            }
 
-        });
-        
-        if(validate){
-            return true;
+        let validate = false;
+
+        validate = await connection.query(query)
+            .then(res => {
+
+                if (res.rows[0] != undefined) {
+                    return true;
+                }
+                
+                return false;
+
+            })
+            .catch(error => {
+                console.log("Erro durante consulta:\n", error);
+            });
+
+        return validate;
+
+    },
+
+    async inscriptionConsultantByEventUser(usercpf, eventid) {
+
+        /*Consulta inscrições no banco por CPF do USUÁRIO e ID do evento.
+         *Caso encontrada retorna TRUE senão retorna FALSE.*/
+
+        let validate = false;
+
+        let query = {
+            text: "SELECT (usercpf, eventid) FROM inscription WHERE (usercpf = $1 AND eventid = $2)",
+            values: [usercpf, eventid]
         }
-        else{
-            return false;
-        }
+
+        validate = await connection.query(query)
+            .then(res => {
+                if (res.rows[0] != undefined) {
+                    return true;
+                }
+                return false;
+
+            })
+            .catch(error => {
+                console.log("Erro durante consulta:\n", error);
+            });
+
+        return validate;
+
     }
-    
 
 };
