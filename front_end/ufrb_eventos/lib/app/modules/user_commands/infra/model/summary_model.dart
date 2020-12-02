@@ -1,25 +1,22 @@
 import 'dart:convert';
+
 import 'package:ufrb_eventos/app/modules/user_commands/domain/entities/summary_entity.dart';
-import 'package:ufrb_eventos/app/modules/user_commands/domain/entities/user_entity.dart';
 
 class SummaryModel extends SummaryEntity {
-  SummaryModel({int inscriptionId, UserEntity user, String enrollment, String userInstitution, String description, String summary, String video, String category, String participation, String phone, bool attendance, double userWorkload}) : super(inscriptionId, user, enrollment, userInstitution, description, summary, video, category, participation, phone, attendance, userWorkload);
+  SummaryModel({int inscriptionId, int enrollment, String userInstitution, String title, String description, String summary, String video, String response, String observation}) : super(inscriptionId, enrollment, userInstitution, title, description, summary, video, response, observation);
   
 
   Map<String, dynamic> toMap() {
     return {
       'inscriptionId': inscriptionId,
-      'user': user?.toMap(),
       'enrollment': enrollment,
       'userInstitution': userInstitution,
+      'title': title,
       'description': description,
       'summary': summary,
       'video': video,
-      'category': category,
-      'participation': participation,
-      'phone': phone,
-      'attendance': attendance,
-      'userWorkload': userWorkload,
+      'response': response,
+      'observation': observation,
     };
   }
 
@@ -28,17 +25,14 @@ class SummaryModel extends SummaryEntity {
   
     return SummaryModel(
       inscriptionId: map['inscriptionId'],
-      user: UserEntity.fromMap(map['user']),
       enrollment: map['enrollment'],
       userInstitution: map['userInstitution'],
+      title: map['title'],
       description: map['description'],
       summary: map['summary'],
       video: map['video'],
-      category: map['category'],
-      participation: map['participation'],
-      phone: map['phone'],
-      attendance: map['attendance'],
-      userWorkload: map['userWorkload'],
+      response: map['response'],
+      observation: map['observation'],
     );
   }
 
@@ -46,4 +40,5 @@ class SummaryModel extends SummaryEntity {
 
   factory SummaryModel.fromJson(String source) => SummaryModel.fromMap(json.decode(source));
   
+
 }

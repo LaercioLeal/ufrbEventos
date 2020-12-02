@@ -27,7 +27,7 @@ class _CreateSummaryPageState
               padding: EdgeInsets.fromLTRB(15, 30, 15, 5),
               child: SingleChildScrollView(
                 child: SizedBox(
-                  height: 0.95*MediaQuery.of(context).size.height,
+                  height: 0.95 * MediaQuery.of(context).size.height,
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -44,7 +44,7 @@ class _CreateSummaryPageState
                         SizedBox(
                           height: 40,
                           child: TextFormField(
-                            onChanged: controller.setRegistration,
+                            onChanged: controller.setEntrolment,
                             decoration: InputDecoration(
                               fillColor: Colors.white,
                               filled: true,
@@ -90,7 +90,7 @@ class _CreateSummaryPageState
                         ),
                         SizedBox(
                           height: 40,
-                                                  child: TextFormField(
+                          child: TextFormField(
                             onChanged: controller.setTitle,
                             decoration: InputDecoration(
                               fillColor: Colors.white,
@@ -114,7 +114,9 @@ class _CreateSummaryPageState
                         ),
                         Row(
                           children: [
-                            Text('Necessita apresentação?', style: TextStyle(color: Colors.white, fontSize: 20)),
+                            Text('Necessita apresentação?',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20)),
                           ],
                         ),
                         Container(
@@ -126,18 +128,31 @@ class _CreateSummaryPageState
                           //crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             GestureDetector(
-                              child: Image.asset('assets/img/botaoSoma.png', height: 50, width: 50,),
+                              child: Image.asset(
+                                'assets/img/botaoSoma.png',
+                                height: 50,
+                                width: 50,
+                              ),
                               onTap: controller.getPdf,
                             ),
                             GestureDetector(
-                              child: Image.asset('assets/img/botaoVideo.png', height: 50, width: 50,),
+                              child: Image.asset(
+                                'assets/img/botaoVideo.png',
+                                height: 50,
+                                width: 50,
+                              ),
                               onTap: controller.getMovie,
                             ),
-                            GestureDetector(
-                              child:
-                                  Image.asset('assets/img/botaoCadastrar.png', height: 50, width: 120,),
-                              onTap: controller.sendSummary,
-                            ),
+                            Observer(builder: (_) {
+                              return controller.upload ? CircularProgressIndicator() : GestureDetector(
+                                child: Image.asset(
+                                  'assets/img/botaoCadastrar.png',
+                                  height: 50,
+                                  width: 120,
+                                ),
+                                onTap: controller.sendSummary,
+                              );
+                            }),
                           ],
                         )
                       ],

@@ -25,6 +25,21 @@ mixin _$CreateSummaryController on _CreateSummaryControllerBase, Store {
     });
   }
 
+  final _$uploadAtom = Atom(name: '_CreateSummaryControllerBase.upload');
+
+  @override
+  bool get upload {
+    _$uploadAtom.reportRead();
+    return super.upload;
+  }
+
+  @override
+  set upload(bool value) {
+    _$uploadAtom.reportWrite(value, super.upload, () {
+      super.upload = value;
+    });
+  }
+
   final _$summaryModelAtom =
       Atom(name: '_CreateSummaryControllerBase.summaryModel');
 
@@ -130,22 +145,22 @@ mixin _$CreateSummaryController on _CreateSummaryControllerBase, Store {
       ActionController(name: '_CreateSummaryControllerBase');
 
   @override
-  dynamic setRegistration(dynamic value) {
+  dynamic setInstituition(dynamic value) {
     final _$actionInfo = _$_CreateSummaryControllerBaseActionController
-        .startAction(name: '_CreateSummaryControllerBase.setRegistration');
+        .startAction(name: '_CreateSummaryControllerBase.setInstituition');
     try {
-      return super.setRegistration(value);
+      return super.setInstituition(value);
     } finally {
       _$_CreateSummaryControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic setInstituition(dynamic value) {
+  dynamic setEntrolment(dynamic value) {
     final _$actionInfo = _$_CreateSummaryControllerBaseActionController
-        .startAction(name: '_CreateSummaryControllerBase.setInstituition');
+        .startAction(name: '_CreateSummaryControllerBase.setEntrolment');
     try {
-      return super.setInstituition(value);
+      return super.setEntrolment(value);
     } finally {
       _$_CreateSummaryControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -199,6 +214,7 @@ mixin _$CreateSummaryController on _CreateSummaryControllerBase, Store {
   String toString() {
     return '''
 presentation: ${presentation},
+upload: ${upload},
 summaryModel: ${summaryModel},
 filePDF: ${filePDF},
 fileVideo: ${fileVideo},

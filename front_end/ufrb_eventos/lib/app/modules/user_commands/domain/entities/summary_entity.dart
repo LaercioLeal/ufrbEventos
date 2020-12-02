@@ -1,34 +1,23 @@
 
-import 'user_entity.dart';
-
 class SummaryEntity {
   int inscriptionId;
-  UserEntity user;
-  String enrollment;
+  int enrollment;
   String userInstitution;
+  String title;
   String description;
   String summary;
   String video;
-  String category;
-  String participation;
-  String phone;
-  bool attendance;
-  double userWorkload;
+  String response;
+  String observation;
   SummaryEntity(
     this.inscriptionId,
-    this.user,
-    this.enrollment,
-    this.userInstitution,
-    this.description,
-    this.summary,
-    this.video,
-    this.category,
-    this.participation,
-    this.phone,
-    this.attendance,
-    this.userWorkload,
+      this.enrollment,
+      this.userInstitution,
+      this.title,
+      this.description,
+      this.summary,
+      this.video,
+      this.response,
+      this.observation
   );
-
-  
-
 }

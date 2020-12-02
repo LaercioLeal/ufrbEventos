@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4987b6aa-a9dd-4e64-bc24-c693ab7f4f27" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/front_end/ufrb_eventos/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/ufrb_eventos/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/app_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/app_module.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/domain/entities/summary_entity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/domain/entities/summary_entity.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/external/datasouces/user_command_datasources.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/external/datasouces/user_command_datasources.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/infra/model/summary_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/infra/model/summary_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/presenter/createSummary/create_summary_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/presenter/createSummary/create_summary_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/presenter/createSummary/create_summary_controller.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/presenter/createSummary/create_summary_controller.g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/presenter/createSummary/create_summary_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/ufrb_eventos/lib/app/modules/user_commands/presenter/createSummary/create_summary_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front_end/ufrb_eventos/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/front_end/ufrb_eventos/pubspec.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1l79w1cGuVtwQGz668zJTohjZUK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/front_end/ufrb_eventos" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4987b6aa-a9dd-4e64-bc24-c693ab7f4f27" name="Default Changelist" comment="" />
+      <created>1606937497427</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606937497427</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="690" y="261" width="542" height="611" key="FileChooserDialogImpl" timestamp="1606937517356">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="690" y="261" width="542" height="611" key="FileChooserDialogImpl/0.40.1920.1040/1920.0.1360.768@0.40.1920.1040" timestamp="1606937517356" />
+  </component>
+</project>

@@ -12,20 +12,22 @@ class UserCommandDatasource implements IUserCommandsDatasource {
   Future<SummaryModel> createSummary(SummaryModel summaryModel) async {
     Response response;
     try {
-      response = await dio.post('/summary',
-          data: summaryModel.toMap(),
-          options: Options(headers: {'Content-Type': 'application/json'}));
-    } catch (e) {
+      debugPrint(summaryModel.toJson());
+      response = await dio.post('http://192.168.0.116:3500/summary/createsummary',
+          data: summaryModel.toMap());
+    } on DioError catch (e){
       if (e.response.statusCode == 404) {
         throw NotValidParams('rota não encontrada');
       }
       if (e.response.statusCode == 401) {
         throw NotValidParams('não autorizado');
       }
+    }
+    catch (e) {
       throw RequestError('erro ao fazer requisição ao servidor $e');
     }
 
-    debugPrint(SummaryModel.fromJson(response.data).toJson().toString());
-    return SummaryModel.fromJson(response.data);
+   // debugPrint(SummaryModel.fromMap(response.data).toJson().toString());
+    return SummaryModel.fromMap(response.data);
   }
 }

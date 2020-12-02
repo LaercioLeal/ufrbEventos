@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:ufrb_eventos/app/modules/user_commands/domain/entities/user_entity.dart';
 import 'package:ufrb_eventos/app/modules/user_commands/domain/usecases/create_summary.dart';
 import 'package:mobx/mobx.dart';
 import 'package:ufrb_eventos/app/modules/user_commands/infra/model/summary_model.dart';
@@ -21,7 +20,10 @@ abstract class _CreateSummaryControllerBase with Store {
   bool presentation = false;
 
   @observable
-  SummaryModel summaryModel = SummaryModel();
+  bool upload = false;
+
+  @observable
+  SummaryModel summaryModel = SummaryModel(inscriptionId: 1, enrollment: 1);
 
   @observable
   File filePDF;
@@ -35,35 +37,66 @@ abstract class _CreateSummaryControllerBase with Store {
   _CreateSummaryControllerBase(this.usecase);
 
   @action
-  setRegistration(value) => summaryModel =
-      SummaryModel(user: UserEntity(accountIdentification: value.toInt()));
+  setInstituition(value) => summaryModel.userInstitution = value;
 
   @action
-  setInstituition(value) => summaryModel = SummaryModel(userInstitution: value);
+  setEntrolment(value) => summaryModel.enrollment = int.parse(value);
 
   @action
-  setEvent(value) => summaryModel = SummaryModel(inscriptionId: value.toInt());
+  setEvent(value) {
+    if (value == "Evento_1") {
+      return summaryModel.inscriptionId = 1;
+    }
+
+    if (value == "Evento_2") {
+      return summaryModel.inscriptionId = 2;
+    }
+
+    if (value == "Evento_3") {
+      return summaryModel.inscriptionId = 3;
+    }
+
+    if (value == "Evento_4") {
+      return summaryModel.inscriptionId = 4;
+    }
+
+    if (value == "Evento_5") {
+      return summaryModel.inscriptionId = 5;
+    }
+  }
 
   @action
-  setTitle(value) => summaryModel = SummaryModel(inscriptionId: value.toInt());
+  setTitle(value) => summaryModel.title = value;
 
   @action
-  setDescription(value) => summaryModel = SummaryModel(description: value);
+  setDescription(value) => summaryModel.description = value;
 
   @action
   setPresentation(bool value) => presentation = value;
 
   @action
   sendSummary() async {
+    debugPrint(summaryModel.toMap().toString());
+    upload = true;
     time = DateTime.now();
-    await uploadPdf();
-    await uploadMovie();
-    /* var result = await usecase(summaryModel);
+    if (filePDF != null) {
+      await uploadPdf();
+    }
+    if (fileVideo != null) {
+      await uploadMovie();
+    }
+    var result = await usecase(summaryModel);
     result.fold((l) {
+      upload = false;
       asuka.showSnackBar(SnackBar(content: Text('Deu ruim')));
     }, (r) {
+      upload = false;
+      if (r.response == 'false') {
+        asuka
+            .showSnackBar(SnackBar(content: Text('Deu ruim, tenta de novo')));
+      }
       asuka.showSnackBar(SnackBar(content: Text('Deu Bão')));
-    });*/
+    });
   }
 
   @action
@@ -78,10 +111,7 @@ abstract class _CreateSummaryControllerBase with Store {
 
   @action
   uploadPdf() async {
-    await storage
-        .ref('$time/summary.pdf')
-        .putFile(filePDF)
-        .then((value) async {
+    await storage.ref('$time/summary.pdf').putFile(filePDF).then((value) async {
       return summaryModel.summary = await value.ref.getDownloadURL();
     });
   }
@@ -98,10 +128,7 @@ abstract class _CreateSummaryControllerBase with Store {
 
   @action
   uploadMovie() async {
-    await storage
-        .ref('$time/movie.mp4')
-        .putFile(fileVideo)
-        .then((value) async {
+    await storage.ref('$time/movie.mp4').putFile(fileVideo).then((value) async {
       return summaryModel.video = await value.ref.getDownloadURL();
     });
   }

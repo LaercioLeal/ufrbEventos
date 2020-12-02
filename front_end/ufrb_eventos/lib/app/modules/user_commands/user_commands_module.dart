@@ -15,7 +15,6 @@ class UserCommandsModule extends ChildModule {
         Bind<ICreateSummary>((i) => CreateSummary(i())),
         Bind<IUserCommandsRepository>((i) => UserCommandsRepository(i())),
         Bind<IUserCommandsDatasource>((i) => UserCommandDatasource(i())),
-        
       ];
 
   @override

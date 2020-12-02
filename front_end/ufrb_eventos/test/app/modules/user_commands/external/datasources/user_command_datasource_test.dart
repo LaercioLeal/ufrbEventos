@@ -15,7 +15,7 @@ main() {
   test('Deve retornar um summary', () async {
     when(dio.post(any, options: anyNamed('options'), data: anyNamed('data')))
         .thenAnswer(
-            (_) async => Response(data: summary.toJson(), statusCode: 200));
+            (_) async => Response(data: summary.toMap(), statusCode: 200));
     var result =
         datasource.createSummary(summary);
     expect(result, completion(isA<SummaryModel>()));
